@@ -1,7 +1,9 @@
-const express=require("express")
 const connectdb = require("./db")
-const app=express()
+const cookieParser=require("cookie-parser")
+const app = require("./app")
+
 app.get("/user",(req,res)=>{
+
 res.send("get user")
 })
 connectdb()
