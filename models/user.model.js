@@ -6,15 +6,15 @@ const userSchema=new mongoose.Schema({
     email:{type:String,required:true,unique:true,lowercase:true,trim:true},
     fullName:{type:String},
     avtarImage:{type:String,required:true},//cloudinary url
-    coverImage:{type:String,required:true},
+    coverImage:{type:String},
     watchHistory:{type:mongoose.Schema.Types.ObjectId,ref:"video"},
     password:{type:String,required:[true,'password is required']},
     refreshToken:{type:String}
 },{timestamps:true})
 userSchema.pre("save",async function(req,res,next){
-    if(!this.isModified("password")) return next()
-this.password=bcrypt.hash(this.password,10)
-next()
+    if(!this.isModified("password")) return next
+this.password= await bcrypt.hash(this.password,10)
+next
 userSchema.methods.isPasswordCorrect=async function(password){
     return await bcrypt.compare(password,this.password)
 }
