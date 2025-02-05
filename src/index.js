@@ -1,8 +1,8 @@
 const connectdb = require("./db");
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const app=express()
-// const app = require("./app");
+// const app=express()
+const app = require("./app");
 const userRouter = require("./routes/user");
 
 // Middleware
