@@ -13,6 +13,5 @@ userRouter.post("/create",uploadFile.fields(
         maxCount:1
     }
 ]
-)
-,register)
+),register)
 module.exports=userRouter
